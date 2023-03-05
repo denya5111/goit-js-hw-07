@@ -4,11 +4,11 @@ import { galleryItems } from './gallery-items.js';
 function createListItemsMarkup(items) {
   return items
     .map(
-      ({ preview, original, description }) => `<div class="gallery__item">
+      ({ preview, original, description }) => `<li class="gallery__item">
   <a class="gallery__item" href="${original}">
-  <img class="gallery__image" src="${preview}" alt="${description}" title="${description}" onclick="return false"/>
-</a>;
-</div>`
+  <img class="gallery__image" src="${preview}" alt="${description}" title="${description}" onclick="return false" style="display: block"/>
+</a>
+</li>`
     )
     .join('');
 }
