@@ -25,7 +25,6 @@ galleryContainer.innerHTML = createListItemsMarkup(galleryItems);
 galleryContainer.addEventListener('click', handlerClickImg);
 
 const instance = basicLightbox.create(`<img width="1280" src="">`, {
-  closable: true,
   onShow: instance => document.addEventListener('keydown', handlerKeydown),
   onClose: instance => document.removeEventListener('keydown', handlerKeydown),
 });
