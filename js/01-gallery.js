@@ -24,18 +24,23 @@ galleryContainer.innerHTML = createListItemsMarkup(galleryItems);
 
 galleryContainer.addEventListener('click', handlerClickImg);
 
+const instance = basicLightbox.create(`<img width="1280" src="">`, {
+  closable: true,
+  onShow: instance => document.addEventListener('keydown', handlerKeydown),
+  onClose: instance => document.removeEventListener('keydown', handlerKeydown),
+});
+
 function handlerClickImg(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
+  instance.element().querySelector('img').src = event.target.dataset.source;
+  instance.show();
+}
 
-  const modal = basicLightbox.create(`<img width="1280" src="${event.target.dataset.source}">`);
-
-  if (modal.show()) {
-    document.addEventListener('keydown', event => {
-      if (event.code === 'Escape') {
-        modal.close();
-      }
-    });
+function handlerKeydown(event) {
+  if (event.code === 'Escape') {
+    instance.close();
+    return;
   }
 }

@@ -17,4 +17,4 @@ const galleryContainer = document.querySelector('.gallery');
 
 galleryContainer.innerHTML = createListItemsMarkup(galleryItems);
 
-const lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250 });
+const lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250, captionsData: 'alt' });
